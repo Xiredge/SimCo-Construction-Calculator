@@ -1,0 +1,116 @@
+body {
+  background-color: #F5F7F8 !important;
+}
+
+
+
+
+
+/* ===========================
+          Navigation Bar
+   =========================== */
+.navbar {
+  display: flex;
+  justify-content: center;
+  width: 55rem;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1rem;
+  background: #D0B8A8;
+  border-radius: 10px;
+  border: 1px solid black;
+}
+
+/* navbar Text Style */
+/* Start */
+#webTitle {
+  font-size: 1.2rem;
+  font-family: "IBM Plex Mono",
+    monospace;
+  font-weight: bold;
+  color: black;
+  margin: 0;
+}
+
+.navbar h4{
+    color: #495E57;
+    font-size: 1rem;
+    font-family: "IBM Plex Mono",
+      monospace;
+    margin: 0;
+}/* End */
+
+
+
+
+
+/* ===========================
+          Calculator
+   =========================== */
+  
+/**/
+/* Card Style */
+.card {
+  min-height: 250px;
+  background-color: #F8EDE3 !important;
+  border-radius: 10px !important;
+  border: 1px solid black !important;
+}
+
+/* #F4CE14:yellow */
+.card h4{
+  color: black;
+  font-size: 1.2rem;
+  font-weight: 500;
+  font-family: "IBM Plex Mono", monospace;
+}
+
+/* Card Button & Input Style */
+/* Start */
+.offgrid {
+  display: grid;
+  color: black;
+  font-size: 1rem;
+  font-family: "IBM Plex Mono", monospace;
+  margin: 1rem;
+}
+
+.scrollable-dropdown {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+#buildingButton {
+  color: black;
+  min-width: 50px;
+  grid-row-start: 1;
+  grid-row-end: 1;
+  border: 1px solid black !important;
+}
+
+#calculateButton {
+  font-family: "IBM Plex Mono", monospace;
+  color: #F5F7F8;
+  border: 1px solid black !important;
+}
+
+.form-control#levelInput{
+  min-width: 200px;
+  background-color: #F5F7F8;
+  grid-row-start: 3; 
+  grid-row-end: 3;
+  margin-top: .5rem;
+  border: 1px solid black !important;
+}
+/* #495E57:gray */
+.output {
+  background-color: #D0B8A8; 
+  min-width: 300px;
+  color: black;
+  font-size: 1rem;
+  font-family: "IBM Plex Mono", monospace;
+  border: 1px solid black !important;
+  border-radius: 10px;
+  width: auto; 
+  height: auto; 
+}/* End */

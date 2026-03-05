@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>SimCo Construction Calculator</title>
+    <link rel="stylesheet" href="/constructionstyle.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+<body>
+    
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top" aria-label="Fourth navbar example">
+        <div class="container-fluid"> <a class="navbar-brand" href="/"><h1 id="webTitle">SimCo Assistant</h1></a>
+            <div class="collapse navbar-collapse" id="navbarsExample04">
+                <ul id="subtitle" class="navbar-nav ms-auto pt-0 mb-md-0">
+                    <li class="nav-item m-0"> <a class="nav-link" href="{% url 'home' %}"><h4>Aerospace</h4></a> </li>
+                    <li class="nav-item m-0"> <a class="nav-link" href="#Projects"><h4>Construction</h4></a> </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <form id="buildingForm" method="POST" action="/calculate">
+        <div id="mainDiv" class="container vh-100 d-flex justify-content-center align-items-center">
+                <div class="card">
+                    <h4 class="text-center m-2">Building Material and Cost Calculator</h4>
+                    <div class="card-body d-flex flex-row justify-content-around align-items-center">
+                        
+                            <div class="btn-group m-2">
+                                <div class="offgrid">
+                                    
+                                        <button id="buildingButton" type="button" class="btn btn-info dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                            Buildings
+                                        </button>
+                                    
+                                        <ul class="dropdown-menu scrollable-dropdown">
+                                            <li><h6 class="dropdown-header">Production</h6></li>
+                                            <li><a class="dropdown-item" data-building="Farm">Farm</a></li>
+                                            <li><a class="dropdown-item" data-building="Ranch">Ranch</a></li>
+                                            <li><a class="dropdown-item" data-building="Beverage factory">Beverage factory</a></li>
+                                            <li><a class="dropdown-item" data-building="Fashion factory">Fashion factory</a></li>
+                                            <li><a class="dropdown-item" data-building="Forest nursery">Forest nursery</a></li>
+                                            <li><a class="dropdown-item" data-building="Water reservoir">Water reservoir</a></li>
+                                            <li><a class="dropdown-item" data-building="Slaughterhouse">Slaughterhouse</a></li>
+                                            <li><a class="dropdown-item" data-building="Mine">Mine</a></li>
+                                            <li><a class="dropdown-item" data-building="Quarry">Quarry</a></li>
+                                            <li><a class="dropdown-item" data-building="Mill">Mill</a></li>
+                                            <li><a class="dropdown-item" data-building="Bakery">Bakery</a></li>
+                                            <li><a class="dropdown-item" data-building="Factory">Factory</a></li>
+                                            <li><a class="dropdown-item" data-building="General contractor">General contractor</a></li>
+                                            <li><a class="dropdown-item" data-building="Power plant">Power plant</a></li>
+                                            <li><a class="dropdown-item" data-building="Shipping depot">Shipping depot</a></li>
+                                            <li><a class="dropdown-item" data-building="Concrete plant">Concrete plant</a></li>
+                                            <li><a class="dropdown-item" data-building="Oil rig">Oil rig</a></li>
+                                            <li><a class="dropdown-item" data-building="Refinery">Refinery</a></li>
+                                            <li><a class="dropdown-item" data-building="Construction factory">Construction factory</a></li>
+                                            <li><a class="dropdown-item" data-building="Electronics factory">Electronics factory</a></li>
+                                            <li><a class="dropdown-item" data-building="Food processing plant">Food processing plant</a></li>
+                                            <li><a class="dropdown-item" data-building="Car factory">Car factory</a></li>
+                                            <li><a class="dropdown-item" data-building="Hangar">Hangar</a></li>
+                                            <li><a class="dropdown-item" data-building="Propulsion factory">Propulsion factory</a></li>
+                                            <li><a class="dropdown-item" data-building="Catering">Catering</a></li>
+                                            <li><a class="dropdown-item" data-building="Aerospace factory">Aerospace factory</a></li>
+                                            <li><a class="dropdown-item" data-building="Vertical integration facility">Vertical integration facility</a></li>
+                                            <li><a class="dropdown-item" data-building="Aerospace electronics">Aerospace electronics</a></li>
+                                            <li><h6 class="dropdown-header">Retail & Sales</h6></li>
+                                            <li><a class="dropdown-item" data-building="Grocery store">Grocery store</a></li>
+                                            <li><a class="dropdown-item" data-building="Hardware store">Hardware store</a></li>
+                                            <li><a class="dropdown-item" data-building="Electronics store">Electronics store</a></li>
+                                            <li><a class="dropdown-item" data-building="Fashion store">Fashion store</a></li>
+                                            <li><a class="dropdown-item" data-building="Car dealership">Car dealership</a></li>
+                                            <li><a class="dropdown-item" data-building="Gas station">Gas station</a></li>
+                                            <li><a class="dropdown-item" data-building="Sales offices">Sales offices</a></li>
+                                            <li><a class="dropdown-item" data-building="Restaurant">Restaurant</a></li>
+                                            <li><h6 class="dropdown-header">Research</h6></li>
+                                            <li><a class="dropdown-item" data-building="Software R&D">Software R&D</a></li>
+                                            <li><a class="dropdown-item" data-building="Fashion & Design">Fashion & Design</a></li>
+                                            <li><a class="dropdown-item" data-building="Kitchen">Kitchen</a></li>
+                                            <li><a class="dropdown-item" data-building="Breeding laboratory">Breeding laboratory</a></li>
+                                            <li><a class="dropdown-item" data-building="Chemistry laboratory">Chemistry laboratory</a></li>
+                                            <li><a class="dropdown-item" data-building="Plant research center">Plant research center</a></li>
+                                            <li><a class="dropdown-item" data-building="Launch pad">Launch pad</a></li>
+                                            <li><a class="dropdown-item" data-building="Automotive R&D">Automotive R&D</a></li>
+                                            <li><a class="dropdown-item" data-building="Physics laboratory">Physics laboratory</a></li>
+                                            <li><h6 class="dropdown-header">Recreation</h6></li>
+                                            <li><a class="dropdown-item" data-building="Castle">Castle</a></li>
+                                            <li><a class="dropdown-item" data-building="Park">Park</a></li>
+                                            <li><a class="dropdown-item" data-building="Lake">Lake</a></li>
+                                            <li><h6 class="dropdown-header">Other</h6></li>
+                                            <li><a class="dropdown-item" data-building="Academy">Academy</a></li>
+                                            <li><a class="dropdown-item" data-building="Bank">Bank</a></li>
+                                            <li><h6 class="dropdown-header">Seasonal</h6></li>
+                                            <li><a class="dropdown-item" data-building="Beach market">Beach market</a></li>
+                                            <li><a class="dropdown-item" data-building="Halloween market">Halloween market</a></li>
+                                            <li><a class="dropdown-item" data-building="Xmas market">Xmas market</a></li>
+                                        </ul>
+
+                                        <!-- Hidden input to store selected building so we can send the selected data to python -->
+                                        <input type="hidden" name="selected_building" id="selectedBuilding">
+                                        <div>
+                                            <input type="number" name="level" id="levelInput" min="1" max="100" class="form-control" placeholder="Starting level..."
+                                                value=<%=level %> disabled>
+                                            <!-- <input type="number" name="level" id="levelInput" min="1" max="100" class="form-control" placeholder="Desired level..." value = <%= level %> disabled> -->
+                                        </div>
+                                </div>
+                            </div>
+                            
+                        <div class="output p-2">
+
+                            <!-- Currency and Quantity Formatters, so numbers are displayed with commas and decimals -->
+                            <% const currencyFormatter=new Intl.NumberFormat("en-US", { style: "currency" , currency: "USD" , }); const
+                                quantityFormatter=new Intl.NumberFormat("en-US", { currency: "USD" , }); %>
+
+                            <% if(locals.level && locals.reinforcedConcreteTotal && locals.bricksTotal && locals.planksTotal && locals.constructionUnitsTotal) { %>
+                                <h6 style="justify-content: center;">Construction Costs for <%= buildings %> at Level <%= level %></h6><br>
+                                <p id="reinforcedConcretePrice">Reinforced concrete: <%= quantityFormatter.format(reinforcedConcreteAmount) %>pcs × <%= currencyFormatter.format(reinforcedConcretePrice) %> @<%= currencyFormatter.format(reinforcedConcreteTotal) %></p>
+                                <p id="bricksPrice">Bricks: <%= quantityFormatter.format(bricksAmount) %>pcs × <%= currencyFormatter.format(bricksPrice) %> @<%= currencyFormatter.format(bricksTotal) %></p>
+                                <p id="planksPrice">Planks: <%= quantityFormatter.format(planksAmount) %>pcs × <%= currencyFormatter.format(planksPrice) %> @<%= currencyFormatter.format(planksTotal) %></p>
+                                <p id="constructionUnitsPrice">Construction units: <%= quantityFormatter.format(constructionUnitsAmount) %>pcs × <%= currencyFormatter.format(constructionUnitsPrice) %> @<%= currencyFormatter.format(constructionUnitsTotal) %></p>
+                                <p id="totalPrice">Grand Total: <%= currencyFormatter.format(grandTotal) %></p>
+                            <% } else { %>
+                                <h6 style="justify-content: center;">Current Material Prices</h6><br>
+                                <p id="reinforcedConcretePrice">Reinforced concrete: <%= currencyFormatter.format(reinforcedConcretePrice) %></p>
+                                <p id="bricksPrice">Bricks: <%= currencyFormatter.format(bricksPrice) %></p>
+                                <p id="planksPrice">Planks: <%= currencyFormatter.format(planksPrice) %></p>
+                                <p id="constructionUnitsPrice">Construction units: <%= currencyFormatter.format(constructionUnitsPrice) %> </p>
+                            <% } %>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="card-body d-flex flex-column justify-content-center align-items-center">
+                        <button id="calculateButton" type="submit" class="btn btn-primary">Calculate</button>
+                    </div>
+                        
+                </div>
+        </div>
+    </form>
+
+    <!-- ======================================================================JS====================================================================== -->
+    <!-- JQuery link -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <script src="/constructionScript.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -2,9 +2,9 @@ This project fetches real-time prices from the Sim Companies API and calculates 
 
 Screenshots of the website:
 
-![First Page Load](./screeshot1.png)
+![First Page Load](./screenshot1.png)
 
-![Output Result](./screeshot2.png)
+![Output Result](./screenshot2.png)
 
 
 Features

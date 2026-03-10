@@ -3,6 +3,7 @@
 
 # But DO NOT ignore this specific file
 !buildingMaterials.json
+!pakage.json
 
 # Logs
 logs

@@ -24,8 +24,8 @@ const urls = [
   "https://www.simcompanies.com/api/v3/market/0/108/", //Planks
 ];
 
-//Fetches the market data from the Sim Companies API and saves it as JSON files in the public folder. 
-//This is done every 5 minutes to ensure that the prices are up to date when users access the website.
+// Fetches the market data from the Sim Companies API and saves it as JSON files in the public folder. 
+// This is done every 5 minutes to ensure that the prices are up to date when users access the website.
 async function fetchAndSave() {
   try {
     console.log("Fetching market data:", new Date().toISOString());
@@ -57,12 +57,12 @@ async function fetchAndSave() {
 }
 
 // Run once at startup
-//fetchAndSave();
+fetchAndSave();
 
-// Run every 5 minutes
-//setInterval(fetchAndSave, 5 * 60 * 1000);
+// Run every 10 minutes, format is in milliseconds, so 10 minutes = 10 * 60 * 1000 ms
+setInterval(fetchAndSave, 10 * 60 * 1000);
 
-//For reading and opening a JSON file
+// For reading and opening a JSON file
 function readJSONFile(filePath, log=false) {
   const data = JSON.parse(
     fs.readFileSync(filePath, "utf8"),
@@ -92,7 +92,7 @@ app.get("/", (req, res) => {
 });
 
 app.post("/calculate", (req, res) => {
-	//Reads the JSON files and stores the data in variables.
+	// Reads the JSON files and stores the data in variables.
   const materials = readJSONFile("public/buildingMaterials.json");
 	const reinforcedConcretePriceData = readJSONFile("public/market_101.json");
 	const bricksPriceData = readJSONFile("public/market_102.json");
@@ -102,32 +102,32 @@ app.post("/calculate", (req, res) => {
 	const buildings = req.body.selected_building;
     let level = req.body.level;
 
-	//Subtracts 1 level from the input level, since the material required only increases after level 2.
-	//So basically, level 1 and 2 has the same amount of materials, level 3 and above has the base amount + 1 level increase.
+	// Subtracts 1 level from the input level, since the material required only increases after level 2.
+	// So basically, level 1 and 2 has the same amount of materials, level 3 and above has the base amount + 1 level increase.
 	if(level > 1){
 		level -= 1;
 	}
 
-	//Declares the amount of materials needed for the selected building and level. The amount increases by the base amount for each level after level 1.
+	// Declares the amount of materials needed for the selected building and level. The amount increases by the base amount for each level after level 1.
 	const reinforcedConcreteAmount = materials[buildings].reinforcedConcrete * level;
 	const bricksAmount = materials[buildings].bricks * level;
 	const planksAmount = materials[buildings].planks * level;
 	const constructionUnitsAmount = materials[buildings].constructionUnits * level;
 
-	//Declares the price of material per piece.
+	// Declares the price of material per piece.
 	const reinforcedConcretePrice = reinforcedConcretePriceData[0].price;
 	const bricksPrice = bricksPriceData[0].price;
 	const planksPrice = planksPriceData[0].price;
 	const constructionUnitsPrice = constructionUnitsPriceData[0].price;
 
-	//Calculates the total cost for each material and the grand total.
+	// Calculates the total cost for each material and the grand total.
 	const reinforcedConcreteTotal = Math.round(reinforcedConcreteAmount * reinforcedConcretePrice);
 	const bricksTotal = Math.round(bricksAmount * bricksPrice);
 	const planksTotal = Math.round(planksAmount * planksPrice);
 	const constructionUnitsTotal = Math.round(constructionUnitsAmount * constructionUnitsPrice);
 	const grandTotal = reinforcedConcreteTotal + bricksTotal + planksTotal + constructionUnitsTotal;
 
-	//Renders the index.ejs file and passes the calculated values as variables to be displayed on the index.ejs.
+	// Renders the index.ejs file and passes the calculated values as variables to be displayed on the index.ejs.
   res.render("index.ejs", {
 		reinforcedConcreteAmount: reinforcedConcreteAmount,
 		bricksAmount: bricksAmount,
@@ -148,7 +148,7 @@ app.post("/calculate", (req, res) => {
 });
 
 
-//Starts the server and listens on the specified port.
+// Starts the server and listens on the specified port.
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
 });

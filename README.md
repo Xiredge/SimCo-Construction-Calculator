@@ -32,4 +32,4 @@ This project fetches real-time prices from the Sim Companies API and calculates 
 - Display price history for each product
 
 **License**
-This project is licensed under the MIT License.
+-This project is licensed under the MIT License.
